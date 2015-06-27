@@ -66,12 +66,13 @@ dependencies {
     console "org.grails:grails-console"
 
     compile 'com.google.code.gson:gson:2.2.4'
-    test('joda-time:joda-time:2.2') {
+    compile 'commons-beanutils:commons-beanutils:1.8.3'
+    testCompile 'joda-time:joda-time:2.2' /*{
         export = false
-    }
-    test('org.spockframework:spock-grails-support:0.7-groovy-2.0') {
+    }*/
+    testCompile 'org.spockframework:spock-grails-support:0.7-groovy-2.0' /*{
         export = false
-    }
+    }*/
 }
 
 task wrapper(type: Wrapper) {

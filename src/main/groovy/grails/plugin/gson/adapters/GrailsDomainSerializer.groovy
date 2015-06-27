@@ -1,12 +1,16 @@
 package grails.plugin.gson.adapters
 
+import grails.core.GrailsApplication
+import grails.core.GrailsDomainClass
+import grails.core.GrailsDomainClassProperty
+
 import java.lang.reflect.Type
 import com.google.gson.*
 import groovy.transform.TupleConstructor
 import groovy.util.logging.Slf4j
 import org.apache.commons.beanutils.PropertyUtils
-import org.codehaus.groovy.grails.commons.*
-import org.codehaus.groovy.grails.commons.cfg.GrailsConfig
+import org.grails.core.*
+import org.grails.core.cfg.DeprecatedGrailsConfig
 import org.springframework.util.ReflectionUtils;
 
 @TupleConstructor
@@ -84,7 +88,7 @@ class GrailsDomainSerializer<T> implements JsonSerializer<T> {
 
 	@Lazy
 	private FieldNamingStrategy fieldNamingStrategy = {
-		def grailsConfig = new GrailsConfig(grailsApplication)
+		def grailsConfig = new DeprecatedGrailsConfig(grailsApplication)
 		grailsConfig.get('grails.converters.gson.fieldNamingPolicy', FieldNamingStrategy) ?: FieldNamingPolicy.IDENTITY
 	}()
 
@@ -104,8 +108,8 @@ class GrailsDomainSerializer<T> implements JsonSerializer<T> {
 		config.get('grails.converters.gson.domain.include.version', config.get('grails.converters.domain.include.version', false))
 	}
 
-	private GrailsConfig getConfig() {
-		new GrailsConfig(grailsApplication)
+	private DeprecatedGrailsConfig getConfig() {
+		new DeprecatedGrailsConfig(grailsApplication)
 	}
 
 }
