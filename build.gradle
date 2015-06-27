@@ -25,6 +25,7 @@ apply plugin: 'idea'
 apply plugin: "spring-boot"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-gsp"
+apply plugin: 'java'
 // Used for publishing to central repository, remove if not needed
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
@@ -61,18 +62,24 @@ dependencies {
     provided "org.grails:grails-dependencies"
     provided 'javax.servlet:javax.servlet-api:3.1.0'
 
+    provided 'org.grails:grails-plugin-converters:3.0.1'
+    compile 'commons-beanutils:commons-beanutils:1.8.3'
+
+    compile "org.grails.plugins:hibernate"
+    compile "org.grails.plugins:cache"
+    compile "org.hibernate:hibernate-ehcache"
+
     testCompile "org.grails:grails-plugin-testing"
 
     console "org.grails:grails-console"
 
     compile 'com.google.code.gson:gson:2.2.4'
-    compile 'commons-beanutils:commons-beanutils:1.8.3'
     testCompile 'joda-time:joda-time:2.2' /*{
         export = false
     }*/
-    testCompile 'org.spockframework:spock-grails-support:0.7-groovy-2.0' /*{
-        export = false
-    }*/
+//    testCompile 'org.spockframework:spock-grails-support:0.7-groovy-2.0' /*{
+//        export = false
+//    }*/
 }
 
 task wrapper(type: Wrapper) {

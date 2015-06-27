@@ -4,8 +4,8 @@ import com.google.gson.GsonBuilder
 import grails.util.GrailsNameUtils
 import groovy.transform.TupleConstructor
 import groovy.util.logging.Slf4j
-import org.codehaus.groovy.grails.web.converters.AbstractParsingParameterCreationListener
-import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
+import org.grails.web.converters.AbstractParsingParameterCreationListener
+import grails.web.servlet.mvc.GrailsParameterMap
 
 @TupleConstructor(includeFields = true)
 @Slf4j

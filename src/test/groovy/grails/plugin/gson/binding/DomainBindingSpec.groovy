@@ -7,10 +7,10 @@ import grails.plugin.gson.adapters.GrailsDomainDeserializer
 import grails.plugin.gson.api.ArtefactEnhancer
 import grails.test.mixin.*
 import grails.test.mixin.web.ControllerUnitTestMixin
-import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
+import grails.web.servlet.mvc.GrailsParameterMap
 import spock.lang.*
 
-@Issue('https://github.com/robfletcher/grails-gson/issues/21')
+//@Issue('https://github.com/robfletcher/grails-gson/issues/21')
 @Issue('https://github.com/robfletcher/grails-gson/issues/30')
 @TestMixin(ControllerUnitTestMixin)
 @Mock(Person)

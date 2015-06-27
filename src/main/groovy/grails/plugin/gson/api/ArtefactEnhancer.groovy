@@ -5,7 +5,7 @@ import com.google.gson.*
 import grails.plugin.gson.adapters.GrailsDomainDeserializer
 import grails.plugin.gson.converters.GSON
 import groovy.util.logging.Slf4j
-import org.codehaus.groovy.grails.commons.*
+import grails.core.*
 
 /**
  * Adds GSON meta methods and properties to Grails artifacts.

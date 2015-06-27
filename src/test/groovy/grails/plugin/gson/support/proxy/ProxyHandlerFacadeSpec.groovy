@@ -1,6 +1,6 @@
 package grails.plugin.gson.support.proxy
 
-import org.codehaus.groovy.grails.support.proxy.EntityProxyHandler
+import grails.core.support.proxy.EntityProxyHandler
 import org.grails.datastore.gorm.proxy.GroovyProxyFactory
 import spock.lang.Specification
 import spock.lang.IgnoreRest

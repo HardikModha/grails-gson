@@ -7,7 +7,7 @@ import grails.plugin.gson.adapters.*
 import grails.plugin.gson.api.ArtefactEnhancer
 import grails.plugin.gson.spring.GsonBuilderFactory
 import grails.test.mixin.Mock
-import org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletRequest
+import org.grails.plugins.testing.GrailsMockHttpServletRequest
 import spock.lang.Specification
 import spock.util.mop.ConfineMetaClassChanges
 

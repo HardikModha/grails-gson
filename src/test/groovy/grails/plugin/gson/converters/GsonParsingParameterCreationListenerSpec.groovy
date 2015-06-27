@@ -4,8 +4,8 @@ import com.google.gson.*
 import grails.test.mixin.TestMixin
 import grails.test.mixin.web.ControllerUnitTestMixin
 import grails.util.GrailsWebUtil
-import org.codehaus.groovy.grails.web.converters.JSONParsingParameterCreationListener
-import org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap
+//import org.codehaus.groovy.grails.web.converters.JSONParsingParameterCreationListener
+import grails.web.servlet.mvc.GrailsParameterMap
 import spock.lang.*
 import static grails.plugin.gson.converters.GSON.CACHED_GSON
 
@@ -17,7 +17,7 @@ class GsonParsingParameterCreationListenerSpec extends Specification {
 
 	def gsonBuilder = new GsonBuilder()
 	def gsonListener = new GsonParsingParameterCreationListener(gsonBuilder)
-	def jsonListener = new JSONParsingParameterCreationListener()
+//	def jsonListener = new JSONParsingParameterCreationListener()
 
 	void 'does nothing if the request content is not JSON'() {
 		when:
@@ -54,31 +54,31 @@ class GsonParsingParameterCreationListenerSpec extends Specification {
 		request.getAttribute(CACHED_GSON) instanceof JsonNull
 	}
 
-	void 'parses #description into request parameters consistently with JSON implementation'() {
-		given:
-		def jsonListener = new JSONParsingParameterCreationListener()
-
-		and:
-		request.contentType = APPLICATION_JSON
-		request.content = requestBody.getBytes('UTF-8')
-		request.format = 'json'
-
-		and:
-		def clonedParams = new GrailsParameterMap(request)
-
-		when:
-		gsonListener.paramsCreated(params)
-		jsonListener.paramsCreated(clonedParams)
-
-		then:
-		params == clonedParams
-
-		where:
-		requestBody                                                                                   | description
-		'{"message":"Namaste"}'                                                                       | 'simple json object'
-		'{"message":{"type":"Greeting","content":"Namaste"}}'                                         | 'nested json object'
-		'{"message":[{"type":"Greeting","content":"Namaste"},{"type":"Greeting","content":"O HAI"}]}' | 'json object with nested arrays'
-		'{"class":"foo.Greeting","message":"Namaste"}'                                                | 'json with "class" value'
-	}
+//	void 'parses #description into request parameters consistently with JSON implementation'() {
+//		given:
+//		def jsonListener = new JSONParsingParameterCreationListener()
+//
+//		and:
+//		request.contentType = APPLICATION_JSON
+//		request.content = requestBody.getBytes('UTF-8')
+//		request.format = 'json'
+//
+//		and:
+//		def clonedParams = new GrailsParameterMap(request)
+//
+//		when:
+//		gsonListener.paramsCreated(params)
+//		jsonListener.paramsCreated(clonedParams)
+//
+//		then:
+//		params == clonedParams
+//
+//		where:
+//		requestBody                                                                                   | description
+//		'{"message":"Namaste"}'                                                                       | 'simple json object'
+//		'{"message":{"type":"Greeting","content":"Namaste"}}'                                         | 'nested json object'
+//		'{"message":[{"type":"Greeting","content":"Namaste"},{"type":"Greeting","content":"O HAI"}]}' | 'json object with nested arrays'
+//		'{"class":"foo.Greeting","message":"Namaste"}'                                                | 'json with "class" value'
+//	}
 
 }
