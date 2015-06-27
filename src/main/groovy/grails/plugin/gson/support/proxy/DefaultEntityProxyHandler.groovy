@@ -1,6 +1,6 @@
 package grails.plugin.gson.support.proxy
 
-import org.codehaus.groovy.grails.support.proxy.*
+import grails.core.support.proxy.*
 
 /**
  * This is an extension of `DefaultProxyHandler` that makes it comply with the `EntityProxyHandler` interface.

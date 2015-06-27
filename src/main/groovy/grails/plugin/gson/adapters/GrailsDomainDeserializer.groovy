@@ -6,7 +6,8 @@ import grails.util.GrailsNameUtils
 import groovy.transform.TupleConstructor
 import groovy.util.logging.Slf4j
 import org.codehaus.groovy.grails.commons.*
-import static org.codehaus.groovy.grails.web.binding.DataBindingUtils.bindObjectToDomainInstance
+import grails.core.*
+import static grails.web.databinding.DataBindingUtils.bindObjectToDomainInstance
 
 /**
  * A _JsonDeserializer_ implementation that works on Grails domain objects.

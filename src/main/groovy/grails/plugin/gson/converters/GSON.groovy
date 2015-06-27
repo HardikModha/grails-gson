@@ -4,8 +4,8 @@ import javax.servlet.http.*
 import com.google.gson.*
 import com.google.gson.stream.JsonWriter
 import grails.util.GrailsWebUtil
-import org.codehaus.groovy.grails.web.converters.*
-import org.codehaus.groovy.grails.web.converters.marshaller.ObjectMarshaller
+import org.grails.web.converters.*
+import org.grails.web.converters.marshaller.ObjectMarshaller
 import org.springframework.context.*
 
 class GSON extends AbstractConverter<JsonWriter> implements ApplicationContextAware {

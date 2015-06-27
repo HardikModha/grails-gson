@@ -1,7 +1,7 @@
 package grails.plugin.gson.support.proxy
 
 import groovy.transform.TupleConstructor
-import org.codehaus.groovy.grails.support.proxy.EntityProxyHandler
+import grails.core.support.proxy.EntityProxyHandler
 import org.grails.datastore.gorm.proxy.GroovyProxyFactory
 
 /**

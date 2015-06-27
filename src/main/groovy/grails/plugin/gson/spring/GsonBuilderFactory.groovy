@@ -5,7 +5,7 @@ import com.google.gson.*
 import grails.plugin.gson.adapters.*
 import groovy.util.logging.Slf4j
 import org.codehaus.groovy.grails.commons.*
-import org.codehaus.groovy.grails.commons.cfg.GrailsConfig
+import org.grails.core.cfg.DeprecatedGrailsConfig
 import org.codehaus.groovy.grails.plugins.*
 import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 import org.springframework.beans.factory.annotation.Autowired
@@ -53,7 +53,7 @@ class GsonBuilderFactory extends AbstractFactoryBean<GsonBuilder> implements App
 	}
 
 	private void applyConfiguration(GsonBuilder builder) {
-		def grailsConfig = new GrailsConfig(grailsApplication)
+		def grailsConfig = new DeprecatedGrailsConfig(grailsApplication)
 
 		def defaultPrettyPrint = grailsConfig.get("grails.converters.default.pretty.print", false)
 		def prettyPrint = grailsConfig.get("grails.converters.gson.pretty.print", defaultPrettyPrint)
