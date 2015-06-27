@@ -2,7 +2,7 @@
 grails:
     profile: web-plugin
     codegen:
-        defaultPackage: grails.gson
+        defaultPackage: grails.plugin.gson
 info:
     app:
         name: '@info.app.name@'
