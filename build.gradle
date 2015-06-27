@@ -16,7 +16,7 @@ plugins {
     id "com.jfrog.bintray" version "1.1"
 }
 
-version "0.1-SNAPSHOT"
+version "2.0-SNAPSHOT"
 group "org.grails.plugins"
 
 apply plugin: 'maven-publish'
@@ -64,8 +64,19 @@ dependencies {
     testCompile "org.grails:grails-plugin-testing"
 
     console "org.grails:grails-console"
+
+    compile 'com.google.code.gson:gson:2.2.4'
+    test('joda-time:joda-time:2.2') {
+        export = false
+    }
+    test('org.spockframework:spock-grails-support:0.7-groovy-2.0') {
+        export = false
+    }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+//grails.project.repos.grailsCentral.username = System.getenv("GRAILS_CENTRAL_USERNAME")
+//grails.project.repos.grailsCentral.password = System.getenv("GRAILS_CENTRAL_PASSWORD")
