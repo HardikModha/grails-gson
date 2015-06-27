@@ -6,13 +6,14 @@ import grails.plugin.gson.support.proxy.DefaultEntityProxyHandler
 import grails.plugin.gson.support.proxy.ProxyHandlerFacade
 
 class GsonGrailsPlugin {
-    
-    def version = '1.2-SNAPSHOT'
-    def grailsVersion = '2.0 > *'
-    def dependsOn = [:]
-	def loadAfter = ['controllers', 'converters']
+
+//    def version = '1.2-SNAPSHOT'
+    // the version or versions of Grails the plugin is designed for
+    def grailsVersion = "3.0.2 > *"
+//    def dependsOn = [:]
+    def loadAfter = ['controllers', 'converters']
     def pluginExcludes = [
-        'grails-app/views/**/*'
+            'grails-app/views/**/*'
     ]
 
     def title = 'Gson Plugin'
@@ -25,23 +26,27 @@ class GsonGrailsPlugin {
     def issueManagement = [system: 'GitHub', url: 'https://github.com/robfletcher/grails-gson/issues']
     def scm = [url: 'https://github.com/robfletcher/grails-gson']
 
-	def doWithSpring = {
-		if (!manager?.hasGrailsPlugin('hibernate')) {
-			proxyHandler DefaultEntityProxyHandler
-		}
+    Closure doWithSpring() {
+        { ->
+            if (!manager?.hasGrailsPlugin('hibernate')) {
+                proxyHandler DefaultEntityProxyHandler
+            }
 
-		proxyFacade ProxyHandlerFacade, ref('proxyHandler')
-		domainSerializer GrailsDomainSerializer, ref('grailsApplication'), ref('proxyFacade')
-		domainDeserializer GrailsDomainDeserializer, ref('grailsApplication')
-		gsonBuilder GsonBuilderFactory
-		jsonParsingParameterCreationListener GsonParsingParameterCreationListener, ref('gsonBuilder')
-	}
+            proxyFacade ProxyHandlerFacade, ref('proxyHandler')
+            domainSerializer GrailsDomainSerializer, ref('grailsApplication'), ref('proxyFacade')
+            domainDeserializer GrailsDomainDeserializer, ref('grailsApplication')
+            gsonBuilder GsonBuilderFactory
+            jsonParsingParameterCreationListener GsonParsingParameterCreationListener, ref('gsonBuilder')
+        }
+    }
 
-    def doWithDynamicMethods = { ctx ->
-        def enhancer = new grails.plugin.gson.api.ArtefactEnhancer(application, ctx.gsonBuilder, ctx.domainDeserializer)
-		enhancer.enhanceRequest()
-		enhancer.enhanceControllers()
-		enhancer.enhanceDomains()
+    def doWithDynamicMethods() {
+        { ctx ->
+            def enhancer = new grails.plugin.gson.api.ArtefactEnhancer(application, ctx.gsonBuilder, ctx.domainDeserializer)
+            enhancer.enhanceRequest()
+            enhancer.enhanceControllers()
+            enhancer.enhanceDomains()
+        }
     }
 
 }
