@@ -74,17 +74,9 @@ dependencies {
     console "org.grails:grails-console"
 
     compile 'com.google.code.gson:gson:2.2.4'
-    testCompile 'joda-time:joda-time:2.2' /*{
-        export = false
-    }*/
-//    testCompile 'org.spockframework:spock-grails-support:0.7-groovy-2.0' /*{
-//        export = false
-//    }*/
+    compile 'joda-time:joda-time:2.2'
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
-
-//grails.project.repos.grailsCentral.username = System.getenv("GRAILS_CENTRAL_USERNAME")
-//grails.project.repos.grailsCentral.password = System.getenv("GRAILS_CENTRAL_PASSWORD")
